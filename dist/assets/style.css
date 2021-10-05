@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 html {
   font-size: 62.5%;
 }
@@ -19,7 +20,99 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   background: linear-gradient(#ff7b8f, pink);
+}
+.main__search-form {
+  width: 100%;
+  max-width: 80rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+.main__search-form__input {
+  padding: 0.5rem;
+  border-radius: 1.5rem;
+  border: none;
+  text-align: center;
+  outline: none;
+  background: rgba(255, 255, 255, 0.5);
+  transition: background 0.15s ease-out;
+}
+.main__search-form__input:focus {
+  background: rgba(255, 255, 255, 0.9);
+}
+.main__card.active {
+  opacity: 1;
+}
+.main__card {
+  display: flex;
+  opacity: 0;
+  width: 100%;
+  max-width: 100rem;
+  height: 40rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  box-shadow: 3px 3px 5px;
+  transition: opacity 0.3s ease-out;
+}
+.main__card__profile {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+.main__card__profile__figure {
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem;
+}
+.main__card__profile__figure img {
+  display: block;
+  width: 80%;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 1rem auto;
+}
+.main__card__profile__figure__title {
+  font-size: 2.5rem;
+  text-align: center;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  font-family: "Press Start 2P", cursive;
+}
+.main__card__info {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+.main__card__info__url {
+  flex-basis: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 2rem;
+  color: inherit;
+  cursor: pointer;
+  font-style: italic;
+}
+.main__card__info__details {
+  flex-basis: 5rem;
+  display: flex;
+  align-items: center;
+}
+.main__card__info__details__control {
+  flex: 1;
+  text-align: center;
+}
+.main__card__info__details__control__text {
+  font-weight: bold;
+  font-size: 2rem;
+  font-style: italic;
+}
+.main__card__info__details__control__value {
+  font-size: 2rem;
 }

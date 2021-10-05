@@ -1,11 +1,122 @@
 @import "defaults";
 @import "mixins";
 
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 .main {
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   background: linear-gradient(rgb(255, 123, 143), pink);
+
+  // Search form
+  &__search-form {
+    width: 100%;
+    max-width: 80rem;
+    padding: .5rem;
+    text-align: center;
+
+    &__input {
+      padding: .5rem;
+      border-radius: 1.5rem;
+      border: none;
+      text-align: center;
+      outline: none;
+      background: rgba(255, 255, 255, .5);
+      transition: background .15s ease-out;
+
+      &:focus {
+        background: rgba(255, 255, 255, .9);
+      }
+    }
+  }
+
+  // Card
+  &__card.active {
+    opacity: 1;
+  }
+
+  &__card {
+    display: flex;
+    opacity: 0;
+    width: 100%;
+    max-width: 100rem;
+    height: 40rem;
+    background: rgba(255, 255, 255, .1);
+    border-radius: 1.5rem;
+    box-shadow: 3px 3px 5px;
+    transition: opacity .3s ease-out;
+
+    &__profile {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: .5rem;
+
+      &__figure {
+        width: 100%;
+        text-align: center;
+        padding: .5rem;
+
+        img {
+          display: block;
+          width: 80%;
+          border-radius: 50%;
+          object-fit: cover;
+          margin: 1rem auto;
+        }
+
+        &__title {
+          font-size: 2.5rem;
+          text-align: center;
+          letter-spacing: .1rem;
+          font-weight: bold;
+          font-family: 'Press Start 2P', cursive;
+        }
+      }
+    }
+
+    &__info {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+
+      &__url {
+        flex-basis: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        font-size: 2rem;
+        color: inherit;
+        cursor: pointer;
+        font-style: italic;
+      }
+
+      &__details {
+        flex-basis: 5rem;
+        display: flex;
+        align-items: center;
+
+        &__control {
+          flex: 1;
+          text-align: center;
+
+          &__text {
+            font-weight: bold;
+            font-size: 2rem;
+            font-style: italic;
+          }
+
+          &__value {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
 }
