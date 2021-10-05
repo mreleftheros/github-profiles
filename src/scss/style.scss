@@ -49,6 +49,7 @@
     border-radius: 1.5rem;
     box-shadow: 3px 3px 5px;
     transition: opacity .3s ease-out;
+    overflow: hidden;
 
     &__profile {
       flex: 1;
@@ -114,6 +115,53 @@
 
           &__value {
             font-size: 2rem;
+          }
+        }
+      }
+
+      &__repos-list {
+        flex: 1;
+        width: 100%;
+        list-style: none;
+        padding: .5rem;
+        overflow: auto;
+        
+        &__item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 1rem auto;
+          padding: 0 1rem;
+          border-radius: 1.5rem;
+          width: 90%;
+          height: 5rem;
+          box-shadow: 1px 1px 3px #000;
+          cursor: pointer;
+          transition: opacity .15s ease-in;
+
+          &:hover {
+            opacity: .5;
+          }
+
+          &__title {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: .1rem;
+          }
+
+          &__control {
+            display: flex;
+            flex-direction: column;
+
+            &__text {
+              font-size: 1.5rem;
+              text-align: center;
+            }
+
+            &__value {
+              font-size: 1rem;
+              text-align: center;
+            }
           }
         }
       }

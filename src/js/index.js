@@ -3,7 +3,29 @@ const card = document.getElementById("card");
 const baseUrl = "https://api.github.com/users/";
 let reposList;
 
+const createRepos = data => {
+  const fragment = new DocumentFragment();
 
+  data.forEach(repo => {
+    const liElement = document.createElement("li");
+    liElement.classList.add("main__card__info__repos-list__item");
+    liElement.setAttribute("data-link", repo.html_url);
+
+    let html = `
+      <h3 class="main__card__info__repos-list__item__title">${repo.name}</h3>
+      <div class="main__card__info__repos-list__item__control">
+        <span class="main__card__info__repos-list__item__control__text">&#9733;</span>
+        <span class="main__card__info__repos-list__item__control__value">${repo.stargazers_count}</span>
+      </div>
+    `;
+
+    liElement.innerHTML = html;
+
+    fragment.appendChild(liElement);
+  })
+
+  reposList.appendChild(fragment);
+};
 
 // fetches repos of name and calls createRepos function
 const getRepos = async name => {
@@ -12,6 +34,7 @@ const getRepos = async name => {
   const res = await fetch(url);
   const data = await res.json();
 
+  console.log(data);
   return createRepos(data);
 };
 
