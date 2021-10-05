@@ -18,7 +18,7 @@ body {
 
 .main {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -48,15 +48,22 @@ body {
 }
 .main__card {
   display: flex;
+  flex-direction: column;
   opacity: 0;
   width: 100%;
   max-width: 100rem;
-  height: 40rem;
+  height: auto;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 1.5rem;
   box-shadow: 3px 3px 5px;
   transition: opacity 0.3s ease-out;
   overflow: hidden;
+}
+@media only screen and (min-width: 768px) {
+  .main__card {
+    flex-direction: row;
+    height: 40rem;
+  }
 }
 .main__card__profile {
   flex: 1;
@@ -135,23 +142,29 @@ body {
   height: 5rem;
   box-shadow: 1px 1px 3px #000;
   cursor: pointer;
-  transition: opacity 0.15s ease-in;
 }
-.main__card__info__repos-list__item:hover {
-  opacity: 0.5;
-}
-.main__card__info__repos-list__item__title {
+.main__card__info__repos-list__item__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
   font-size: 2rem;
   font-weight: bold;
   letter-spacing: 0.1rem;
+  transition: opacity 0.15s ease-in;
+}
+.main__card__info__repos-list__item__link:hover {
+  opacity: 0.5;
 }
 .main__card__info__repos-list__item__control {
+  pointer-events: none;
   display: flex;
   flex-direction: column;
 }
 .main__card__info__repos-list__item__control__text {
   font-size: 1.5rem;
   text-align: center;
+  color: #ffff35;
+  text-shadow: 1px 1px 3px #000;
 }
 .main__card__info__repos-list__item__control__value {
   font-size: 1rem;

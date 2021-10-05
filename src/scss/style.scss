@@ -5,7 +5,7 @@
 
 .main {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -41,15 +41,21 @@
 
   &__card {
     display: flex;
+    flex-direction: column;
     opacity: 0;
     width: 100%;
     max-width: 100rem;
-    height: 40rem;
+    height: auto;
     background: rgba(255, 255, 255, .1);
     border-radius: 1.5rem;
     box-shadow: 3px 3px 5px;
     transition: opacity .3s ease-out;
     overflow: hidden;
+
+    @include mq(768px) {
+      flex-direction: row;
+      height: 40rem;
+    }
 
     &__profile {
       flex: 1;
@@ -137,25 +143,31 @@
           height: 5rem;
           box-shadow: 1px 1px 3px #000;
           cursor: pointer;
-          transition: opacity .15s ease-in;
-
-          &:hover {
-            opacity: .5;
-          }
-
-          &__title {
+          
+          &__link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
             font-size: 2rem;
             font-weight: bold;
             letter-spacing: .1rem;
+            transition: opacity .15s ease-in;
+
+            &:hover {
+              opacity: .5;
+            }
           }
 
           &__control {
+            pointer-events: none;
             display: flex;
             flex-direction: column;
 
             &__text {
               font-size: 1.5rem;
               text-align: center;
+              color: rgb(255, 255, 53);
+              text-shadow: 1px 1px 3px #000;
             }
 
             &__value {

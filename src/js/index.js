@@ -9,10 +9,9 @@ const createRepos = data => {
   data.forEach(repo => {
     const liElement = document.createElement("li");
     liElement.classList.add("main__card__info__repos-list__item");
-    liElement.setAttribute("data-link", repo.html_url);
 
     let html = `
-      <h3 class="main__card__info__repos-list__item__title">${repo.name}</h3>
+      <a class="main__card__info__repos-list__item__link" href=${repo.html_url} target="_blank">${repo.name}</a>
       <div class="main__card__info__repos-list__item__control">
         <span class="main__card__info__repos-list__item__control__text">&#9733;</span>
         <span class="main__card__info__repos-list__item__control__value">${repo.stargazers_count}</span>
@@ -34,7 +33,8 @@ const getRepos = async name => {
   const res = await fetch(url);
   const data = await res.json();
 
-  console.log(data);
+  data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+
   return createRepos(data);
 };
 
@@ -94,9 +94,11 @@ const submitSearchForm = e => {
 
   e.currentTarget.reset();
 
+  card.classList.add("active");
+
   return getUser(username);
 };
 
-getUser("florinpop17");
+getUser("mreleftheros");
 
 searchForm.addEventListener("submit", submitSearchForm);
