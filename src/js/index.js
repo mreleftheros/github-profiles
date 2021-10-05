@@ -40,13 +40,14 @@ const getRepos = async name => {
 
 // creates card which appends in html and calls getRepos 
 const createCard = data => {
+  console.log(data);
   card.innerHTML = "";
 
   let html = `
   <div class="main__card__profile">
     <figure class="main__card__profile__figure">
-      <img class="main__card__profile__figure__img" src=${data.avatar_url} alt=${data.name + "'s picture"}>
-      <figcaption class="main__card__profile__figure__title">${data.name}</figcaption>
+      <img class="main__card__profile__figure__img" src=${data.avatar_url} alt=${data.login + "'s picture"}>
+      <figcaption class="main__card__profile__figure__title">${data.login}</figcaption>
     </figure>
   </div>
   <div class="main__card__info">
@@ -98,7 +99,5 @@ const submitSearchForm = e => {
 
   return getUser(username);
 };
-
-getUser("mreleftheros");
 
 searchForm.addEventListener("submit", submitSearchForm);
