@@ -1,6 +1,21 @@
 const searchForm = document.getElementById("searchForm");
 const card = document.getElementById("card");
+const baseUrl = "https://api.github.com/users/";
+let reposList;
 
+
+
+// fetches repos of name and calls createRepos function
+const getRepos = async name => {
+  const url = baseUrl + name + "/repos";
+
+  const res = await fetch(url);
+  const data = await res.json();
+
+  return createRepos(data);
+};
+
+// creates card which appends in html and calls getRepos 
 const createCard = data => {
   card.innerHTML = "";
 
@@ -27,18 +42,19 @@ const createCard = data => {
         <span class="main__card__info__details__control__value">${data.public_repos}</span>
       </div>
     </div>
-    <div class="main__card__info__repos" id="repos"></div>
+    <ul class="main__card__info__repos-list" id="reposList"></ul>
   </div>
   `;
 
   card.innerHTML = html;
+  
+  reposList = document.getElementById("reposList");
 
   return getRepos(data.login);
 };
 
 // search for user data on github api and call createCard function with returned data
 const getUser = async name => {
-  const baseUrl = "https://api.github.com/users/";
   const res = await fetch(baseUrl + name);
   const data = await res.json();
 
